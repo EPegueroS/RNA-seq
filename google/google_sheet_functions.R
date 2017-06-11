@@ -1,13 +1,15 @@
 # ---------------------------------------------------------------------------- #
-fetchGoogleSheet = function(key, prefix=NULL){
+
+## this function fetches the google sheet containing the description of the RNA samples
+retrieve_sample_sheet = function(google_key, path=NULL){
 
     library(googlesheets)
 
     
-    if(is.null(prefix))
-        prefix='~/'
+    if(is.null(path))
+        path='~/'
 
-    token_path = file.path(prefix, '/googlesheets_token_EPS.rds')
+    token_path = file.path(path, '/googlesheets_token_EPS.rds')
     if(!file.exists(token_path)){
         token <- gs_auth(cache = FALSE, key=key)
         saveRDS(token, file = token_path)
