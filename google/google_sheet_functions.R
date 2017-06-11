@@ -15,7 +15,7 @@ retrieve_sample_sheet = function(google_key, path=NULL){
         saveRDS(token, file = token_path)
     }
     suppressMessages(gs_auth(token = token_path, verbose = FALSE))
-    gap = gs_key(key)
+    gap = gs_key(google_key)
     return(gap)
 }
 
